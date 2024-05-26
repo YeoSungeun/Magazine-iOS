@@ -108,11 +108,18 @@
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <action selector="TextFieldClicked:" destination="0Y9-0m-7fc" eventType="editingDidBegin" id="jtI-Ys-oPF"/>
+                                        <action selector="returnKeyClicked:" destination="0Y9-0m-7fc" eventType="editingDidEndOnExit" id="kEY-yX-xuE"/>
+                                    </connections>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kE-jE-TmU">
                                     <rect key="frame" x="298" y="25" width="75" height="40"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                    <connections>
+                                        <action selector="searchButtonClicked:" destination="0Y9-0m-7fc" eventType="touchUpInside" id="4zp-1j-Lga"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
