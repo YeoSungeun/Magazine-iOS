@@ -1,0 +1,111 @@
+//
+//  RestaurantTableViewController.swift
+//  Magazine
+//
+//  Created by 여성은 on 5/26/24.
+//
+
+import UIKit
+
+class RestaurantTableViewController: UITableViewController {
+    
+    @IBOutlet var searchTextField: UITextField!
+    @IBOutlet var searchButton: UIButton!
+    
+    var restaurantList = RestaurantList().restaurantArray
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setSearchTextFieldAndButton()
+        
+        tableView.rowHeight = 220
+    }
+    
+    func setSearchTextFieldAndButton() {
+        searchButton.setTitle("검색", for: .normal)
+        searchButton.backgroundColor = .lightGray
+        searchButton.setTitleColor(.white, for: .normal)
+        searchButton.titleLabel?.font = .boldSystemFont(ofSize: 30)
+        searchButton.layer.cornerRadius = 5
+        
+        searchTextField.placeholder = "카테고리를 검색하세요"
+        
+    }
+    
+    @objc func likeButtonClicked(sender: UIButton) {
+        restaurantList[sender.tag].like.toggle()
+        
+        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic)
+        print(#function)
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return restaurantList.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell", for: indexPath) as! RestaurantTableViewCell
+        
+        let url = URL(string: restaurantList[indexPath.row].image)
+        cell.restaurantImageView.kf.setImage(with: url)
+        cell.restaurantImageView.contentMode = .scaleAspectFill
+        cell.restaurantImageView.layer.cornerRadius = 10
+        
+        cell.categoryLabel.text = restaurantList[indexPath.row].category
+        cell.categoryLabel.textColor = .white
+        cell.categoryLabel.font = .systemFont(ofSize: 14, weight: .bold)
+        cell.categoryLabel.layer.cornerRadius = 3
+        cell.categoryLabel.layer.masksToBounds = true
+        var categoryColor = UIColor.clear
+        switch restaurantList[indexPath.row].category {
+        case "한식":
+            categoryColor = .orange.withAlphaComponent(0.5)
+        case "양식":
+            categoryColor = .systemPink.withAlphaComponent(0.5)
+        case "분식":
+            categoryColor = .red.withAlphaComponent(0.5)
+        case "카페":
+            categoryColor = .blue.withAlphaComponent(0.5)
+        case "중식":
+            categoryColor = .brown.withAlphaComponent(0.5)
+        case "일식":
+            categoryColor = .green.withAlphaComponent(0.5)
+        case "경양식":
+            categoryColor = .yellow.withAlphaComponent(0.5)
+        default:
+            categoryColor = .gray
+            break
+            
+        }
+        cell.categoryLabel.backgroundColor = categoryColor
+        
+        
+        
+        cell.nameLabel.text = restaurantList[indexPath.row].name
+        cell.nameLabel.font = .systemFont(ofSize: 20, weight: .bold)
+        cell.nameLabel.numberOfLines = 0
+        
+        cell.addressLabel.text = "주소: \(restaurantList[indexPath.row].address)"
+        cell.addressLabel.textColor = .darkGray
+        cell.addressLabel.font = .systemFont(ofSize: 17, weight: .semibold)
+        cell.addressLabel.numberOfLines = 0
+        
+        cell.phoneNumberLabel.text = "전화번호: \(restaurantList[indexPath.row].phoneNumber)"
+        cell.phoneNumberLabel.textColor = .darkGray
+        cell.phoneNumberLabel.font = .systemFont(ofSize: 14)
+        
+        cell.likeButton.setTitle("", for: .normal)
+        let name = restaurantList[indexPath.row].like ? "heart.fill" : "heart"
+        let image = UIImage(systemName: name)
+        cell.likeButton.setImage(image, for: .normal)
+        cell.likeButton.tintColor = .systemPink
+        
+        // 코드로 버튼에 태그 설정하기
+        cell.likeButton.tag = indexPath.row
+        cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
+        return cell
+    }
+
+}
