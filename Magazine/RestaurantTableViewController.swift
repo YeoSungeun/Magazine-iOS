@@ -14,14 +14,13 @@ class RestaurantTableViewController: UITableViewController {
     
     var restaurantList = RestaurantList().restaurantArray
     var searchResultList: [Restaurant] = []
-    
-    var searchBool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        searchResultList = restaurantList
         setSearchTextFieldAndButton()
-        
+    
         tableView.rowHeight = 220
     }
     
@@ -32,14 +31,13 @@ class RestaurantTableViewController: UITableViewController {
             return
         }
         
-        searchBool = true
-        
+        searchResultList.removeAll()
         for restaurant in restaurantList {
-            if restaurant.category == result {
+            if restaurant.category.contains(result) || restaurant.name.contains(result) {
                 searchResultList.append(restaurant)
             }
         }
-        
+        print(searchResultList)
         tableView.reloadData()
     }
     
@@ -51,10 +49,9 @@ class RestaurantTableViewController: UITableViewController {
             return
         }
         
-        searchBool = true
         searchResultList.removeAll()
         for restaurant in restaurantList {
-            if restaurant.category == result {
+            if restaurant.category.contains(result) || restaurant.name.contains(result) {
                 searchResultList.append(restaurant)
             }
         }
@@ -66,7 +63,6 @@ class RestaurantTableViewController: UITableViewController {
     @IBAction func TextFieldClicked(_ sender: UITextField) {
         print(#function)
         searchTextField.text = ""
-        searchBool = false
         tableView.reloadData()
     }
     
@@ -78,53 +74,45 @@ class RestaurantTableViewController: UITableViewController {
         searchButton.titleLabel?.font = .boldSystemFont(ofSize: 30)
         searchButton.layer.cornerRadius = 5
         
-        searchTextField.placeholder = "카테고리를 검색하세요"
+        searchTextField.placeholder = "검색어를 입력하세요"
         
     }
     
     @objc func likeButtonClicked(sender: UIButton) {
-        if searchBool {
-            searchResultList[sender.tag].like.toggle()
-        } else {
-            restaurantList[sender.tag].like.toggle()
-        }
         
+        searchResultList[sender.tag].like.toggle()
+        
+        if let index = restaurantList.firstIndex(where: { $0.name == searchResultList[sender.tag].name }) {
+            restaurantList[index].like.toggle()
+        }
+     
         tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic)
         print(#function)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchBool{
-            return searchResultList.count
-        } else {
-            return restaurantList.count
-        }
+
+        return searchResultList.count
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell", for: indexPath) as! RestaurantTableViewCell
         
-        var list: [Restaurant] = []
         
-        if searchBool{
-            list = searchResultList
-        } else {
-            list = restaurantList
-        }
-        
-        let url = URL(string: list[indexPath.row].image)
+        let url = URL(string: searchResultList[indexPath.row].image)
         cell.restaurantImageView.kf.setImage(with: url)
         cell.restaurantImageView.contentMode = .scaleAspectFill
         cell.restaurantImageView.layer.cornerRadius = 10
         
-        cell.categoryLabel.text = list[indexPath.row].category
+        cell.categoryLabel.text = searchResultList[indexPath.row].category
         cell.categoryLabel.textColor = .white
         cell.categoryLabel.font = .systemFont(ofSize: 14, weight: .bold)
         cell.categoryLabel.layer.cornerRadius = 3
         cell.categoryLabel.layer.masksToBounds = true
         var categoryColor = UIColor.clear
-        switch list[indexPath.row].category {
+        switch searchResultList[indexPath.row].category {
         case "한식":
             categoryColor = .orange.withAlphaComponent(0.5)
         case "양식":
@@ -148,21 +136,21 @@ class RestaurantTableViewController: UITableViewController {
         
         
         
-        cell.nameLabel.text = list[indexPath.row].name
+        cell.nameLabel.text = searchResultList[indexPath.row].name
         cell.nameLabel.font = .systemFont(ofSize: 20, weight: .bold)
         cell.nameLabel.numberOfLines = 0
         
-        cell.addressLabel.text = "주소: \(list[indexPath.row].address)"
+        cell.addressLabel.text = "주소: \(searchResultList[indexPath.row].address)"
         cell.addressLabel.textColor = .darkGray
         cell.addressLabel.font = .systemFont(ofSize: 17, weight: .semibold)
         cell.addressLabel.numberOfLines = 0
         
-        cell.phoneNumberLabel.text = "전화번호: \(list[indexPath.row].phoneNumber)"
+        cell.phoneNumberLabel.text = "전화번호: \(searchResultList[indexPath.row].phoneNumber)"
         cell.phoneNumberLabel.textColor = .darkGray
         cell.phoneNumberLabel.font = .systemFont(ofSize: 14)
         
         cell.likeButton.setTitle("", for: .normal)
-        let name = list[indexPath.row].like ? "heart.fill" : "heart"
+        let name = searchResultList[indexPath.row].like ? "heart.fill" : "heart"
         let image = UIImage(systemName: name)
         cell.likeButton.setImage(image, for: .normal)
         cell.likeButton.tintColor = .systemPink
