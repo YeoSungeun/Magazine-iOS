@@ -5,6 +5,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Travel {
     let title: String
@@ -14,6 +15,21 @@ struct Travel {
     var save: Int?
     var like: Bool?
     let ad: Bool
+    
+    var likeImage: UIImage? {
+        guard let like else { return nil }
+        
+        if like {
+            return UIImage(systemName: "heart.fill")!
+        } else {
+            return UIImage(systemName: "heart")!
+        }
+    }
+    
+    var travelImgaeURL: URL? {
+        guard let urlStr = travel_image, let url = URL(string: urlStr) else { return nil }
+        return url
+    }
 }
 
 struct TravelInfo {

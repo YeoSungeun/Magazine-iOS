@@ -17,16 +17,20 @@ class PopularCitiesViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         self.title = "도시 상세 정보"
         
+        configureTableView()
+        
+    }
+    
+    func configureTableView() {
         // tableView 부하직원 연결
         citiesTableView.delegate = self
         citiesTableView.dataSource = self
         
         // xib
-        let citiesXib = UINib(nibName: "CitiesTableViewCell", bundle: nil)
-        let adXib = UINib(nibName: "AdTableViewCell", bundle: nil)
-        citiesTableView.register(citiesXib, forCellReuseIdentifier: "CitiesTableViewCell")
-        citiesTableView.register(adXib, forCellReuseIdentifier: "AdTableViewCell")
-
+        let citiesXib = UINib(nibName: CitiesTableViewCell.identifier, bundle: nil)
+        let adXib = UINib(nibName: AdTableViewCell.identifier, bundle: nil)
+        citiesTableView.register(citiesXib, forCellReuseIdentifier: CitiesTableViewCell.identifier)
+        citiesTableView.register(adXib, forCellReuseIdentifier: AdTableViewCell.identifier)
     }
     
     @objc func likeButtonClicked(sender: UIButton) {
@@ -56,26 +60,25 @@ class PopularCitiesViewController: UIViewController, UITableViewDelegate, UITabl
         let data = citiesList[indexPath.row]
         
         if isAd {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AdTableViewCell", for: indexPath) as! AdTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: AdTableViewCell.identifier, for: indexPath) as! AdTableViewCell
             
             cell.configureAdCell(data: data)
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CitiesTableViewCell", for: indexPath) as! CitiesTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CitiesTableViewCell.identifier, for: indexPath) as! CitiesTableViewCell
             
             cell.configureCityCell(data: data)
-            
-            let imageName = data.like! ? "heart.fill" : "heart"
-            let image = UIImage(systemName: imageName)
-            cell.likeButton.setImage(image, for: .normal)
-            
+//            
+//            let imageName = data.like! ? "heart.fill" : "heart"
+//            let image = UIImage(systemName: imageName)
+//            cell.likeButton.setImage(image, for: .normal)
+//            
             cell.likeButton.tag = indexPath.row
             cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
             
             return cell
         }
-        
     }
     
 
