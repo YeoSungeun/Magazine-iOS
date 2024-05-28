@@ -19,6 +19,11 @@ extension UILabel {
         self.numberOfLines = 0
     }
     
+    func setBigTitleLabel() {
+        self.font = .boldSystemFont(ofSize: 24)
+        self.numberOfLines = 0
+    }
+    
     func setAdLogoLabel() {
         self.text = " AD "
         self.font = .boldSystemFont(ofSize: 14)

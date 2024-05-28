@@ -40,8 +40,7 @@ class CitiesTableViewCell: UITableViewCell {
         likeButton.setTitle("", for: .normal)
         likeButton.tintColor = .white
         
-        travel_imageView.contentMode = .scaleAspectFill
-        travel_imageView.layer.cornerRadius = 10
+        travel_imageView.setImageView()
     }
     
     func configureCityCell(data: Travel) {
