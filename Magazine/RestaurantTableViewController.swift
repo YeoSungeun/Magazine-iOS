@@ -98,63 +98,11 @@ class RestaurantTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell", for: indexPath) as! RestaurantTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: RestaurantTableViewCell.identifier, for: indexPath) as! RestaurantTableViewCell
         
-        
-        let url = URL(string: searchResultList[indexPath.row].image)
-        cell.restaurantImageView.kf.setImage(with: url)
-        cell.restaurantImageView.contentMode = .scaleAspectFill
-        cell.restaurantImageView.layer.cornerRadius = 10
-        
-        cell.categoryLabel.text = searchResultList[indexPath.row].category
-        cell.categoryLabel.textColor = .white
-        cell.categoryLabel.font = .systemFont(ofSize: 14, weight: .bold)
-        cell.categoryLabel.layer.cornerRadius = 3
-        cell.categoryLabel.layer.masksToBounds = true
-        var categoryColor = UIColor.clear
-        switch searchResultList[indexPath.row].category {
-        case "한식":
-            categoryColor = .orange.withAlphaComponent(0.5)
-        case "양식":
-            categoryColor = .systemPink.withAlphaComponent(0.5)
-        case "분식":
-            categoryColor = .red.withAlphaComponent(0.5)
-        case "카페":
-            categoryColor = .blue.withAlphaComponent(0.5)
-        case "중식":
-            categoryColor = .brown.withAlphaComponent(0.5)
-        case "일식":
-            categoryColor = .green.withAlphaComponent(0.5)
-        case "경양식":
-            categoryColor = .yellow.withAlphaComponent(0.5)
-        default:
-            categoryColor = .gray
-            break
-            
-        }
-        cell.categoryLabel.backgroundColor = categoryColor
-        
-        
-        
-        cell.nameLabel.text = searchResultList[indexPath.row].name
-        cell.nameLabel.font = .systemFont(ofSize: 20, weight: .bold)
-        cell.nameLabel.numberOfLines = 0
-        
-        cell.addressLabel.text = "주소: \(searchResultList[indexPath.row].address)"
-        cell.addressLabel.textColor = .darkGray
-        cell.addressLabel.font = .systemFont(ofSize: 17, weight: .semibold)
-        cell.addressLabel.numberOfLines = 0
-        
-        cell.phoneNumberLabel.text = "전화번호: \(searchResultList[indexPath.row].phoneNumber)"
-        cell.phoneNumberLabel.textColor = .darkGray
-        cell.phoneNumberLabel.font = .systemFont(ofSize: 14)
-        
-        cell.likeButton.setTitle("", for: .normal)
-        let name = searchResultList[indexPath.row].like ? "heart.fill" : "heart"
-        let image = UIImage(systemName: name)
-        cell.likeButton.setImage(image, for: .normal)
-        cell.likeButton.tintColor = .systemPink
-        
+        cell.configureLayout()
+        cell.configureData(data: restaurantList[indexPath.row])
+   
         // 코드로 버튼에 태그 설정하기
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
