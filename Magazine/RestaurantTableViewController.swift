@@ -18,10 +18,23 @@ class RestaurantTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureView()
+        
         searchResultList = restaurantList
         setSearchTextFieldAndButton()
     
         tableView.rowHeight = 220
+    }
+    
+    func configureView() {
+        let map = UIBarButtonItem(image: UIImage(systemName: "map"), style: .plain, target: self, action: #selector(mapButtonClicked))
+        navigationItem.rightBarButtonItem = map
+    }
+    
+    @objc func mapButtonClicked() {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: "RestaurantMapViewController") as? RestaurantMapViewController else { return }
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func searchButtonClicked(_ sender: UIButton) {

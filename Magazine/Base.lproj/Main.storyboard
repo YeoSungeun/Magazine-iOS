@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wKP-GV-3Vz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dev-TD-AJG">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -89,7 +91,7 @@
             </objects>
             <point key="canvasLocation" x="-173" y="1039"/>
         </scene>
-        <!--Item-->
+        <!--Restaurant Table View Controller-->
         <scene sceneID="3c8-Cj-aUC">
             <objects>
                 <tableViewController id="0Y9-0m-7fc" customClass="RestaurantTableViewController" customModule="Magazine" customModuleProvider="target" sceneMemberID="viewController">
@@ -226,7 +228,7 @@
                             <outlet property="delegate" destination="0Y9-0m-7fc" id="eLL-FC-hsv"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="Tp1-Ig-ypo"/>
+                    <navigationItem key="navigationItem" id="Mgm-A4-Ikl"/>
                     <connections>
                         <outlet property="searchButton" destination="3kE-jE-TmU" id="hth-lc-WSz"/>
                         <outlet property="searchTextField" destination="nBK-fV-I5G" id="Pgk-S0-qaj"/>
@@ -234,7 +236,51 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IsM-aD-caX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2503" y="215"/>
+            <point key="canvasLocation" x="4354.9618320610689" y="214.78873239436621"/>
+        </scene>
+        <!--Restaurant Map View Controller-->
+        <scene sceneID="Rrl-2Z-wla">
+            <objects>
+                <viewController storyboardIdentifier="RestaurantMapViewController" id="gIc-kw-GdQ" customClass="RestaurantMapViewController" customModule="Magazine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ney-bP-tST">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ejX-9i-AkG">
+                                <rect key="frame" x="20" y="59" width="353" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Iir-LP-Ev6"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qIk-3T-NbZ">
+                                <rect key="frame" x="0.0" y="93" width="393" height="725"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Soh-dh-aez"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ejX-9i-AkG" firstAttribute="leading" secondItem="Soh-dh-aez" secondAttribute="leading" constant="20" id="19S-SQ-qLf"/>
+                            <constraint firstItem="qIk-3T-NbZ" firstAttribute="bottom" secondItem="Soh-dh-aez" secondAttribute="bottom" id="Igp-pG-Rgg"/>
+                            <constraint firstItem="Soh-dh-aez" firstAttribute="trailing" secondItem="qIk-3T-NbZ" secondAttribute="trailing" id="LGm-kR-LQJ"/>
+                            <constraint firstItem="qIk-3T-NbZ" firstAttribute="top" secondItem="ejX-9i-AkG" secondAttribute="bottom" constant="4" id="XdJ-A0-ymn"/>
+                            <constraint firstItem="qIk-3T-NbZ" firstAttribute="leading" secondItem="Soh-dh-aez" secondAttribute="leading" id="fUg-BU-vAt"/>
+                            <constraint firstItem="Soh-dh-aez" firstAttribute="trailing" secondItem="ejX-9i-AkG" secondAttribute="trailing" constant="20" id="piO-Qx-8bq"/>
+                            <constraint firstItem="ejX-9i-AkG" firstAttribute="top" secondItem="Soh-dh-aez" secondAttribute="top" id="uTC-T6-6g4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="qIk-3T-NbZ" id="O5W-lP-sXs"/>
+                        <outlet property="segmentControl" destination="ejX-9i-AkG" id="JmO-CM-0Ez"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aYy-xb-paH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5170.2290076335876" y="214.78873239436621"/>
         </scene>
         <!--PopularCities-->
         <scene sceneID="ZxT-VK-4gT">
@@ -298,7 +344,6 @@
                         <segue destination="O9G-qi-JwE" kind="relationship" relationship="viewControllers" id="VSN-PW-SbM"/>
                         <segue destination="gPn-TK-b3G" kind="relationship" relationship="viewControllers" id="La9-OE-KqX"/>
                         <segue destination="c6j-tk-rF8" kind="relationship" relationship="viewControllers" id="sH5-oz-ZSF"/>
-                        <segue destination="0Y9-0m-7fc" kind="relationship" relationship="viewControllers" id="D4W-Ge-9Od"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xs8-4v-paT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -333,6 +378,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1MQ-Kw-tEd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1302" y="764"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="r41-Za-Fkc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dev-TD-AJG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Tp1-Ig-ypo"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="p7W-pT-c42">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0Y9-0m-7fc" kind="relationship" relationship="rootViewController" id="Z4e-FE-x5z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lFn-aD-s54" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3428.2442748091603" y="214.78873239436621"/>
         </scene>
     </scenes>
     <resources>

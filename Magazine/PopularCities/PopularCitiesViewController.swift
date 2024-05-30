@@ -88,17 +88,23 @@ extension PopularCitiesViewController:  UITableViewDelegate, UITableViewDataSour
         
         if data.ad {
             let sb = UIStoryboard(name: "PopularCities", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "AdViewController")
+            guard let vc = sb.instantiateViewController(withIdentifier: "AdViewController") as? AdViewController else { return }
             let nav = UINavigationController(rootViewController: vc)
-            
+        
             nav.modalPresentationStyle = .fullScreen
+            
+            vc.data = data
             
             present(nav, animated: true)
             
         } else {
             let sb = UIStoryboard(name: "PopularCities", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "CityDetailViewController")
+            guard let vc = sb.instantiateViewController(withIdentifier: "CityDetailViewController") as? CityDetailViewController else { return }
+            
+            vc.data = data
+            
             let nav = UINavigationController(rootViewController: vc)
+            
             
             navigationController?.pushViewController(vc, animated: true)
             
