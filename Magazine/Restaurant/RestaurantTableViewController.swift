@@ -12,6 +12,7 @@ class RestaurantTableViewController: UITableViewController {
     @IBOutlet var searchTextField: UITextField!
     @IBOutlet var searchButton: UIButton!
     
+    
     var restaurantList = RestaurantList().restaurantArray
     var searchResultList: [Restaurant] = []
 

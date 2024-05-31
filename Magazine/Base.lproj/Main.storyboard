@@ -247,7 +247,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ejX-9i-AkG">
-                                <rect key="frame" x="20" y="59" width="353" height="31"/>
+                                <rect key="frame" x="20" y="59" width="265" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Iir-LP-Ev6"/>
                                 </constraints>
@@ -263,25 +263,67 @@
                                 <rect key="frame" x="0.0" y="93" width="393" height="725"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gko-p5-Wgl">
+                                <rect key="frame" x="293" y="59" width="80" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="필터" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEe-ku-b4P">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dcE-Ke-anJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="dcE-Ke-anJ" firstAttribute="top" secondItem="Gko-p5-Wgl" secondAttribute="top" id="5lK-X8-zDa"/>
+                                    <constraint firstAttribute="bottom" secondItem="dcE-Ke-anJ" secondAttribute="bottom" id="6vu-b1-0Ry"/>
+                                    <constraint firstAttribute="height" constant="30" id="FlQ-Ya-Rjb"/>
+                                    <constraint firstItem="NEe-ku-b4P" firstAttribute="leading" secondItem="Gko-p5-Wgl" secondAttribute="leading" id="GNo-T5-t1i"/>
+                                    <constraint firstAttribute="trailing" secondItem="NEe-ku-b4P" secondAttribute="trailing" id="QUd-Gu-PzZ"/>
+                                    <constraint firstAttribute="width" constant="80" id="XPp-lK-nUx"/>
+                                    <constraint firstAttribute="trailing" secondItem="dcE-Ke-anJ" secondAttribute="trailing" id="eu3-Kn-7Px"/>
+                                    <constraint firstAttribute="bottom" secondItem="NEe-ku-b4P" secondAttribute="bottom" id="iKV-QE-Blv"/>
+                                    <constraint firstItem="NEe-ku-b4P" firstAttribute="top" secondItem="Gko-p5-Wgl" secondAttribute="top" id="n0e-4H-a70"/>
+                                    <constraint firstItem="dcE-Ke-anJ" firstAttribute="leading" secondItem="Gko-p5-Wgl" secondAttribute="leading" id="xG4-si-OWR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Soh-dh-aez"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="ejX-9i-AkG" firstAttribute="leading" secondItem="Soh-dh-aez" secondAttribute="leading" constant="20" id="19S-SQ-qLf"/>
+                            <constraint firstItem="Soh-dh-aez" firstAttribute="trailing" secondItem="Gko-p5-Wgl" secondAttribute="trailing" constant="20" id="8hk-sw-etY"/>
                             <constraint firstItem="qIk-3T-NbZ" firstAttribute="bottom" secondItem="Soh-dh-aez" secondAttribute="bottom" id="Igp-pG-Rgg"/>
                             <constraint firstItem="Soh-dh-aez" firstAttribute="trailing" secondItem="qIk-3T-NbZ" secondAttribute="trailing" id="LGm-kR-LQJ"/>
+                            <constraint firstItem="Gko-p5-Wgl" firstAttribute="leading" secondItem="ejX-9i-AkG" secondAttribute="trailing" constant="8" id="Mc2-Bo-JZf"/>
+                            <constraint firstItem="Gko-p5-Wgl" firstAttribute="top" secondItem="Soh-dh-aez" secondAttribute="top" id="Usi-KG-Ok1"/>
                             <constraint firstItem="qIk-3T-NbZ" firstAttribute="top" secondItem="ejX-9i-AkG" secondAttribute="bottom" constant="4" id="XdJ-A0-ymn"/>
                             <constraint firstItem="qIk-3T-NbZ" firstAttribute="leading" secondItem="Soh-dh-aez" secondAttribute="leading" id="fUg-BU-vAt"/>
-                            <constraint firstItem="Soh-dh-aez" firstAttribute="trailing" secondItem="ejX-9i-AkG" secondAttribute="trailing" constant="20" id="piO-Qx-8bq"/>
                             <constraint firstItem="ejX-9i-AkG" firstAttribute="top" secondItem="Soh-dh-aez" secondAttribute="top" id="uTC-T6-6g4"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ucO-ci-tSL" appends="YES" id="52y-0K-0Bp"/>
+                        </connections>
                     </view>
                     <connections>
+                        <outlet property="filterLabel" destination="NEe-ku-b4P" id="NPu-Bh-oZr"/>
+                        <outlet property="filtertextField" destination="dcE-Ke-anJ" id="2pH-rj-cc0"/>
                         <outlet property="mapView" destination="qIk-3T-NbZ" id="O5W-lP-sXs"/>
                         <outlet property="segmentControl" destination="ejX-9i-AkG" id="JmO-CM-0Ez"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYy-xb-paH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ucO-ci-tSL">
+                    <connections>
+                        <action selector="tappedView:" destination="gIc-kw-GdQ" id="ZVi-S0-sRN"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="5170.2290076335876" y="214.78873239436621"/>
         </scene>

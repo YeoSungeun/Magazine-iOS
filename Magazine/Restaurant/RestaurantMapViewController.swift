@@ -14,19 +14,41 @@ class RestaurantMapViewController: UIViewController {
     @IBOutlet var segmentControl: UISegmentedControl!
     @IBOutlet var mapView: MKMapView!
     
+    @IBOutlet var filtertextField: UITextField!
+    @IBOutlet var filterLabel: UILabel!
+    
+    var picker = UIPickerView()
+    
     var list = RestaurantList().restaurantArray
+    
+    var filterOptionList = ["전체 보기", "한식", "양식", "양식", "아시안", "기타"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        filtertextField.inputView = picker
+        
+        picker.delegate = self
+        picker.dataSource = self
+        
         configureMapView()
         configureSegmentColtrol()
+        configurFilterLabel()
+        
         allAnnotation()
 
     }
     
     @IBAction func segmentControlSelected(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
+        getCategory(index: sender.selectedSegmentIndex)
+    }
+    
+    @IBAction func tappedView(_ sender: UITapGestureRecognizer) {
+        view.endEditing(false)
+    }
+    
+    func getCategory(index: Int) {
+        switch index {
         case 0: allAnnotation()
         case 1: getKoreanFood()
         case 2: getWesternFood()
@@ -35,7 +57,11 @@ class RestaurantMapViewController: UIViewController {
         default: break
         }
     }
-    
+
+
+}
+// configure
+extension RestaurantMapViewController {
     func configureMapView() {
         let location = CLLocationCoordinate2D(latitude: 37.518017, longitude: 126.886696)
         mapView.region = MKCoordinateRegion(center: location, latitudinalMeters: 800, longitudinalMeters: 800)
@@ -43,17 +69,31 @@ class RestaurantMapViewController: UIViewController {
     
     func configureSegmentColtrol() {
         segmentControl.removeAllSegments()
-        
-        segmentControl.insertSegment(withTitle: "전체", at: 0, animated: true)
-        segmentControl.insertSegment(withTitle: "한식",at: 1, animated: true)
-        segmentControl.insertSegment(withTitle: "양식",at: 2, animated: true)
-        segmentControl.insertSegment(withTitle: "아시안",at: 3, animated: true)
-        segmentControl.insertSegment(withTitle: "기타", at: 4, animated: true)
+
+        for index in 0...filterOptionList.count - 1{
+            segmentControl.insertSegment(withTitle: filterOptionList[index], at: index, animated: true)
+        }
         
         segmentControl.selectedSegmentIndex = 0
         
     }
     
+    func configurFilterLabel(){
+        filterLabel.setAdLogoLabel()
+        filterLabel.text = "필터"
+        filterLabel.backgroundColor = .lightGray.withAlphaComponent(0.2)
+        filterLabel.clipsToBounds = true
+        filterLabel.layer.cornerRadius = 5
+        
+        filtertextField.tintColor = .clear
+        filtertextField.backgroundColor = .clear
+        filtertextField.borderStyle = .none
+    }
+    
+}
+
+// mapView annotation
+extension RestaurantMapViewController {
     func setAnnotation(data: Restaurant) {
         let location = CLLocationCoordinate2D(latitude: data.latitude, longitude: data.longitude)
         let annotation = MKPointAnnotation()
@@ -102,3 +142,26 @@ class RestaurantMapViewController: UIViewController {
         }
     }
 }
+
+extension RestaurantMapViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return filterOptionList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return filterOptionList[row]
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("\(row), \(component)")
+        getCategory(index: row)
+        
+    }
+    
+
+}
+
