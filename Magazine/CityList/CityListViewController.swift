@@ -14,7 +14,11 @@ class CityListViewController: UIViewController {
     @IBOutlet var citylistTableView: UITableView!
     
     var list = CityInfo().city
-    var filteredlist: [City] = []
+    var filteredlist: [City] = [] {
+        didSet{
+            citylistTableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +35,7 @@ class CityListViewController: UIViewController {
         
         if sender.selectedSegmentIndex == 0 {
             filteredlist = list
-            citylistTableView.reloadData()
+//            citylistTableView.reloadData()
             
         } else if sender.selectedSegmentIndex == 1 {
             var domesticList:[City] = []
@@ -41,7 +45,7 @@ class CityListViewController: UIViewController {
                 }
             }
             filteredlist = domesticList
-            citylistTableView.reloadData()
+//            citylistTableView.reloadData()
             
         } else if sender.selectedSegmentIndex == 2 {
             var aboardList:[City] = []
@@ -51,7 +55,7 @@ class CityListViewController: UIViewController {
                 }
             }
             filteredlist = aboardList
-            citylistTableView.reloadData()
+//            citylistTableView.reloadData()
             
         }
     }

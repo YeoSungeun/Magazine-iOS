@@ -137,7 +137,13 @@
 		A073A3A82C01723C00BF18A4 /* Magazine */ = {
 			isa = PBXGroup;
 			children = (
+				A05910492C09955A0080A0AE /* Extension */,
+				A0DA1E762C09BB370081D0A9 /* Main */,
 				A04E23022C07824D007D112F /* CityList */,
+				A0AC7EE92C04C4D000BADD98 /* PopularCities */,
+				A059104A2C099DE30080A0AE /* Restaurant */,
+				A0AC7ECD2C030E2300BADD98 /* MagazineInfo.swift */,
+				A0AC7ECB2C03091800BADD98 /* MagazineData.swift */,
 				A04E23002C07810C007D112F /* CityInfo.swift */,
 				A073A3A92C01723C00BF18A4 /* AppDelegate.swift */,
 				A073A3AB2C01723C00BF18A4 /* SceneDelegate.swift */,
@@ -146,13 +152,6 @@
 				A073A3B22C01723D00BF18A4 /* Assets.xcassets */,
 				A073A3B42C01723D00BF18A4 /* LaunchScreen.storyboard */,
 				A073A3B72C01723D00BF18A4 /* Info.plist */,
-				A073A3C02C0173BD00BF18A4 /* MainTableViewController.swift */,
-				A0B1EBA52C0192A50033D347 /* MainTableViewCell.swift */,
-				A0AC7ECB2C03091800BADD98 /* MagazineData.swift */,
-				A0AC7ECD2C030E2300BADD98 /* MagazineInfo.swift */,
-				A059104A2C099DE30080A0AE /* Restaurant */,
-				A0AC7EE92C04C4D000BADD98 /* PopularCities */,
-				A05910492C09955A0080A0AE /* Extension */,
 			);
 			path = Magazine;
 			sourceTree = "<group>";
@@ -171,6 +170,15 @@
 				A04E22FD2C076F3E007D112F /* CityDetailViewController.swift */,
 			);
 			path = PopularCities;
+			sourceTree = "<group>";
+		};
+		A0DA1E762C09BB370081D0A9 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A073A3C02C0173BD00BF18A4 /* MainTableViewController.swift */,
+				A0B1EBA52C0192A50033D347 /* MainTableViewCell.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
