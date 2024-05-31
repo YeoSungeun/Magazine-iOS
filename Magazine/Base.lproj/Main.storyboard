@@ -247,7 +247,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ejX-9i-AkG">
-                                <rect key="frame" x="20" y="59" width="265" height="31"/>
+                                <rect key="frame" x="8" y="59" width="319" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Iir-LP-Ev6"/>
                                 </constraints>
@@ -264,16 +264,16 @@
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gko-p5-Wgl">
-                                <rect key="frame" x="293" y="59" width="80" height="30"/>
+                                <rect key="frame" x="335" y="59" width="50" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="필터" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEe-ku-b4P">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dcE-Ke-anJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -285,7 +285,7 @@
                                     <constraint firstAttribute="height" constant="30" id="FlQ-Ya-Rjb"/>
                                     <constraint firstItem="NEe-ku-b4P" firstAttribute="leading" secondItem="Gko-p5-Wgl" secondAttribute="leading" id="GNo-T5-t1i"/>
                                     <constraint firstAttribute="trailing" secondItem="NEe-ku-b4P" secondAttribute="trailing" id="QUd-Gu-PzZ"/>
-                                    <constraint firstAttribute="width" constant="80" id="XPp-lK-nUx"/>
+                                    <constraint firstAttribute="width" constant="50" id="XPp-lK-nUx"/>
                                     <constraint firstAttribute="trailing" secondItem="dcE-Ke-anJ" secondAttribute="trailing" id="eu3-Kn-7Px"/>
                                     <constraint firstAttribute="bottom" secondItem="NEe-ku-b4P" secondAttribute="bottom" id="iKV-QE-Blv"/>
                                     <constraint firstItem="NEe-ku-b4P" firstAttribute="top" secondItem="Gko-p5-Wgl" secondAttribute="top" id="n0e-4H-a70"/>
@@ -297,8 +297,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="ejX-9i-AkG" firstAttribute="leading" secondItem="Soh-dh-aez" secondAttribute="leading" constant="20" id="19S-SQ-qLf"/>
-                            <constraint firstItem="Soh-dh-aez" firstAttribute="trailing" secondItem="Gko-p5-Wgl" secondAttribute="trailing" constant="20" id="8hk-sw-etY"/>
+                            <constraint firstItem="ejX-9i-AkG" firstAttribute="leading" secondItem="Soh-dh-aez" secondAttribute="leading" constant="8" id="19S-SQ-qLf"/>
+                            <constraint firstItem="Soh-dh-aez" firstAttribute="trailing" secondItem="Gko-p5-Wgl" secondAttribute="trailing" constant="8" id="8hk-sw-etY"/>
                             <constraint firstItem="qIk-3T-NbZ" firstAttribute="bottom" secondItem="Soh-dh-aez" secondAttribute="bottom" id="Igp-pG-Rgg"/>
                             <constraint firstItem="Soh-dh-aez" firstAttribute="trailing" secondItem="qIk-3T-NbZ" secondAttribute="trailing" id="LGm-kR-LQJ"/>
                             <constraint firstItem="Gko-p5-Wgl" firstAttribute="leading" secondItem="ejX-9i-AkG" secondAttribute="trailing" constant="8" id="Mc2-Bo-JZf"/>

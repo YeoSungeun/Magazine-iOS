@@ -21,10 +21,13 @@ class RestaurantMapViewController: UIViewController {
     
     var list = RestaurantList().restaurantArray
     
-    var filterOptionList = ["전체 보기", "한식", "양식", "양식", "아시안", "기타"]
+    var filterOptionList = ["전체", "한식", "양식", "양식", "아시안", "기타"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(backButtonClicked))
+        navigationItem.leftBarButtonItem = backButton
         
         filtertextField.inputView = picker
         
@@ -37,6 +40,9 @@ class RestaurantMapViewController: UIViewController {
         
         allAnnotation()
 
+    }
+    @objc func backButtonClicked() {
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func segmentControlSelected(_ sender: UISegmentedControl) {
@@ -56,7 +62,9 @@ class RestaurantMapViewController: UIViewController {
         case 4: getEtcFood()
         default: break
         }
+    
     }
+    
 
 
 }
