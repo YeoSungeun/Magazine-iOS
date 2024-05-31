@@ -12,9 +12,12 @@ class CityListTableViewCell: UITableViewCell {
     
     static let identifier = "CityListTableViewCell"
     
+    
+    @IBOutlet var cityCellUIView: UIView!
     @IBOutlet var cityImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subTitleLabel: UILabel!
+    @IBOutlet var subTitleBackgroundView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,13 +27,18 @@ class CityListTableViewCell: UITableViewCell {
     }
     
     func configureLayout() {
+        cityCellUIView.clipsToBounds = true
+        cityCellUIView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner]
+        cityCellUIView.layer.cornerRadius = cityCellUIView.frame.height * 0.15
+        
         titleLabel.font = .boldSystemFont(ofSize: 24)
         titleLabel.textColor = .white
         titleLabel.textAlignment = .right
         
         subTitleLabel.font = .systemFont(ofSize: 13, weight: .semibold)
         subTitleLabel.textColor = .white
-        subTitleLabel.backgroundColor = .black.withAlphaComponent(0.5)
+        
+        subTitleBackgroundView.backgroundColor = .black.withAlphaComponent(0.5)
         
         cityImageView.contentMode = .scaleAspectFill
         

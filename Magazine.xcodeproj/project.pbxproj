@@ -98,6 +98,26 @@
 			path = CityList;
 			sourceTree = "<group>";
 		};
+		A05910492C09955A0080A0AE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A0AC7EFC2C04EBB500BADD98 /* UILabel+Extension.swift */,
+				A09837F82C06959C00B94128 /* UIImageView+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		A059104A2C099DE30080A0AE /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				A0AC7ECF2C031B3800BADD98 /* Restaurant.swift */,
+				A0AC7ED12C0381F100BADD98 /* RestaurantTableViewController.swift */,
+				A0AC7ED32C03820800BADD98 /* RestaurantTableViewCell.swift */,
+				A04E231C2C087630007D112F /* RestaurantMapViewController.swift */,
+			);
+			path = Restaurant;
+			sourceTree = "<group>";
+		};
 		A073A39D2C01723C00BF18A4 = {
 			isa = PBXGroup;
 			children = (
@@ -130,13 +150,9 @@
 				A0B1EBA52C0192A50033D347 /* MainTableViewCell.swift */,
 				A0AC7ECB2C03091800BADD98 /* MagazineData.swift */,
 				A0AC7ECD2C030E2300BADD98 /* MagazineInfo.swift */,
-				A0AC7ECF2C031B3800BADD98 /* Restaurant.swift */,
-				A0AC7ED12C0381F100BADD98 /* RestaurantTableViewController.swift */,
-				A0AC7ED32C03820800BADD98 /* RestaurantTableViewCell.swift */,
+				A059104A2C099DE30080A0AE /* Restaurant */,
 				A0AC7EE92C04C4D000BADD98 /* PopularCities */,
-				A0AC7EFC2C04EBB500BADD98 /* UILabel+Extension.swift */,
-				A09837F82C06959C00B94128 /* UIImageView+Extension.swift */,
-				A04E231C2C087630007D112F /* RestaurantMapViewController.swift */,
+				A05910492C09955A0080A0AE /* Extension */,
 			);
 			path = Magazine;
 			sourceTree = "<group>";

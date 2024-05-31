@@ -255,6 +255,9 @@
                                     <segment title="First"/>
                                     <segment title="Second"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentControlSelected:" destination="gIc-kw-GdQ" eventType="valueChanged" id="zQq-pG-W0Z"/>
+                                </connections>
                             </segmentedControl>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qIk-3T-NbZ">
                                 <rect key="frame" x="0.0" y="93" width="393" height="725"/>
