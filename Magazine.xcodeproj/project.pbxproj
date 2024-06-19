@@ -38,6 +38,7 @@
 		A0AC7EF92C04CA3400BADD98 /* TravelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AC7EF82C04CA3400BADD98 /* TravelModel.swift */; };
 		A0AC7EFD2C04EBB500BADD98 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AC7EFC2C04EBB500BADD98 /* UILabel+Extension.swift */; };
 		A0B1EBA62C0192A50033D347 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B1EBA52C0192A50033D347 /* MainTableViewCell.swift */; };
+		A0D27C742C2320A400FE5ABE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A0D27C732C2320A400FE5ABE /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A073A3BF2C01730100BF18A4 /* Kingfisher in Frameworks */,
+				A0D27C742C2320A400FE5ABE /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +201,7 @@
 			name = Magazine;
 			packageProductDependencies = (
 				A073A3BE2C01730100BF18A4 /* Kingfisher */,
+				A0D27C732C2320A400FE5ABE /* SnapKit */,
 			);
 			productName = Magazine;
 			productReference = A073A3A62C01723C00BF18A4 /* Magazine.app */;
@@ -230,6 +233,7 @@
 			mainGroup = A073A39D2C01723C00BF18A4;
 			packageReferences = (
 				A073A3BD2C01730100BF18A4 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				A0D27C722C2320A400FE5ABE /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = A073A3A72C01723C00BF18A4 /* Products */;
 			projectDirPath = "";
@@ -527,6 +531,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		A0D27C722C2320A400FE5ABE /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -534,6 +546,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A073A3BD2C01730100BF18A4 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		A0D27C732C2320A400FE5ABE /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A0D27C722C2320A400FE5ABE /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

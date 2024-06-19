@@ -86,14 +86,9 @@ extension CityListViewController {
         segmentBar.insertSegment(withTitle: "해외", at: 2, animated: true)
         
         segmentBar.selectedSegmentIndex = 0
-        // MARK: segment여기부터
-//        segmentBar.addTarget(self, action: #selector(segmentButtonClicked), for: .touchUpInside)
         
     }
-    
-//    @objc func segmentButtonClicked(sender: UISegmentedControl) {
-//        print("\(sender.selectedSegmentIndex)")
-//    }
+
 }
 
 extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
